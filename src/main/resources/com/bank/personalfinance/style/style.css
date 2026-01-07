@@ -1,0 +1,63 @@
+/* Genel Arka Plan ve Font */
+.root {
+    -fx-font-family: "Segoe UI", Helvetica, sans-serif;
+}
+
+/* Sol Taraftaki Gradient (Renk Geçişi) */
+.left-pane {
+    -fx-background-color: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+}
+
+/* Sağ Taraftaki Giriş Alanı */
+.right-pane {
+    -fx-background-color: #1e1e1e;
+}
+
+/* Yazı Kutuları (TextField & PasswordField) */
+.input-field {
+    -fx-background-color: transparent;
+    -fx-border-color: #555555;
+    -fx-border-width: 0 0 2 0; /* Sadece alt çizgi */
+    -fx-text-fill: #ecf0f1;
+    -fx-font-size: 16px;
+    -fx-prompt-text-fill: #7f8c8d;
+    -fx-padding: 10;
+}
+
+/* Yazı kutusuna tıklayınca (Focus) Neon Efekti */
+.input-field:focused {
+    -fx-border-color: #00c6ff; /* Neon Mavi */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 198, 255, 0.3), 10, 0, 0, 0);
+}
+
+/* GİRİŞ YAP Butonu */
+.login-btn {
+    -fx-background-color: linear-gradient(to right, #00c6ff, #0072ff);
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.login-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 114, 255, 0.6), 15, 0, 0, 0);
+    -fx-background-color: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.login-btn:pressed {
+    -fx-background-color: #005bb5;
+}
+
+/* Başlıklar */
+.title-label {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 0);
+}
+
+.subtitle-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #bdc3c7;
+}
