@@ -34,4 +34,25 @@ public class UserDAO {
         }
         return  null; // Kullanıcı yoksa NULL döner.
     }
+
+    // Kullanıcı Kaydı
+    public boolean register(User user) {
+        String sql = "INSERT INTO users (tc_no, password, ad_soyad, role) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseCon.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, user.getTcNo());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getAdSoyad());
+            stmt.setString(4, "CUSTOMER");
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

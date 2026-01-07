@@ -61,3 +61,273 @@
     -fx-font-size: 18px;
     -fx-text-fill: #bdc3c7;
 }
+
+.header-label {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+}
+
+/* Sol Menü Arka Planı */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+/* Menü Butonları */
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-size: 16px;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-cursor: hand;
+    -fx-padding: 10 0 10 20; /* Sol boşluk */
+    -fx-border-color: transparent transparent #34495e transparent; /* Alt çizgi */
+    -fx-border-width: 0.5px;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: #00c6ff; /* Neon Mavi */
+    -fx-border-color: #00c6ff; /* Kenarlık Mavi olsun */
+    -fx-border-width: 0 0 0 4; /* Sadece soldan çizgi */
+}
+
+/* Bilgi Kartları (Bakiyelerin yazdığı kutular) */
+.card {
+    -fx-background-color: #1e1e1e;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.card-title {
+    -fx-text-fill: #bdc3c7;
+    -fx-font-size: 14px;
+}
+
+.card-value {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* Ana Ekran Arka Planı */
+.content-area {
+    -fx-background-color: #121212; /* Çok koyu gri */
+}
+
+/* Hamburger Menü Butonu */
+.hamburger-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+.hamburger-btn:hover {
+    -fx-text-fill: #00c6ff; /* Üzerine gelince neon mavi olsun */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 198, 255, 0.4), 10, 0, 0, 0);
+}
+
+/* Menüyü Kapatma Butonu (X) */
+.close-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7;
+    -fx-cursor: hand;
+    -fx-font-size: 20px;
+    -fx-padding: 0 10 0 0;
+}
+
+.close-btn:hover {
+    -fx-text-fill: #e74c3c; /* Kırmızı */
+}
+/* --- TABLO TASARIMI (DARK MODE) --- */
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-base: #1e1e1e; /* Genel tablo rengi */
+    -fx-control-inner-background: #1e1e1e;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Kolon Başlıkları */
+.modern-table .column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #00c6ff transparent;
+    -fx-border-width: 2px;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #00c6ff;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #bdc3c7;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Satırlar */
+.modern-table .table-row-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: transparent transparent #333333 transparent;
+}
+
+.modern-table .table-row-cell:odd {
+    -fx-background-color: #252525;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #34495e;
+}
+
+/* Hücre Yazıları */
+.modern-table .table-cell {
+    -fx-text-fill: white;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 14px;
+}
+
+/* Scroll Bar (Kaydırma Çubuğu) Karartma */
+.modern-table .increment-button, .modern-table .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.modern-table .scroll-bar:vertical .track,
+.modern-table .scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.modern-table .scroll-bar:vertical .thumb,
+.modern-table .scroll-bar:horizontal .thumb {
+    -fx-background-color: #555555;
+    -fx-background-radius: 5;
+}
+
+/* --- DASHBOARD STİLLERİ --- */
+
+/* Arka Plan */
+.content-area {
+    -fx-background-color: #121212;
+}
+
+/* 1. KARTLAR (Glassmorphism & Gradient) */
+.dashboard-card {
+    -fx-background-radius: 20;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 0, 5);
+}
+
+.card-gradient-blue {
+    -fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);
+}
+
+.card-gradient-orange {
+    -fx-background-color: linear-gradient(to bottom right, #f2994a, #f2c94c);
+}
+
+.card-title {
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.card-value {
+    -fx-text-fill: white;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 2, 0, 0, 0);
+}
+
+.card-subtitle {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-font-size: 12px;
+}
+
+/* 2. BUTONLAR (Hızlı İşlemler) */
+.action-btn {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-border-color: #333;
+    -fx-border-radius: 30;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-transition: all 0.3s;
+}
+
+.action-btn:hover {
+    -fx-background-color: #2c3e50;
+    -fx-border-color: #00c6ff;
+    -fx-text-fill: #00c6ff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 198, 255, 0.3), 10, 0, 0, 0);
+}
+
+.action-btn-primary {
+    -fx-background-color: #00c6ff;
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-font-weight: bold;
+}
+
+.action-btn-primary:hover {
+    -fx-background-color: #0099cc;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 198, 255, 0.5), 15, 0, 0, 0);
+}
+
+
+/* 3.TABLO */
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-base: #1e1e1e;
+    -fx-control-inner-background: #1e1e1e;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 10;
+}
+
+/* Başlık Satırı (Header) */
+.modern-table .column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #333 transparent;
+    -fx-border-width: 2px;
+}
+
+.modern-table .column-header, .modern-table .filler {
+    -fx-background-color: transparent;
+    -fx-size: 45px;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 13px;
+    -fx-text-transform: uppercase;
+}
+
+/* Satırlar */
+.modern-table .table-row-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: transparent transparent #252525 transparent;
+}
+
+.modern-table .table-row-cell:hover {
+    -fx-background-color: #252525;
+    -fx-cursor: hand;
+}
+
+.modern-table .table-cell {
+    -fx-text-fill: white;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 15px;
+    -fx-padding: 0 10 0 10;
+}

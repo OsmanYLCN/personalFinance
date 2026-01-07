@@ -21,4 +21,14 @@ public class UserService {
             return null;
         }
     }
+
+    public boolean register(String adSoyad, String tcNo, String password) {
+        // Burada ileride validasyon (TC 11 hane mi? Şifre güçlü mü?) yapabilirsin.
+        User newUser = new User();
+        newUser.setAdSoyad(adSoyad);
+        newUser.setTcNo(tcNo);
+        newUser.setPassword(password);
+
+        return userDAO.register(newUser);
+    }
 }
