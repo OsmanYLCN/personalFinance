@@ -44,6 +44,7 @@ public class TransactionDAO {
         }
     }
 
+
     public List<Transaction> getTransactionsByAccountId(int accountId) throws SQLException{
         List<Transaction> list = new ArrayList<>();
         String sql = "SELECT * FROM transactions WHERE source_account_id = ? OR target_account_id = ? ORDER BY transaction_date DESC";
@@ -76,5 +77,55 @@ public class TransactionDAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // KATEGORİYE GÖRE AYLIK TOPLAM HARCAMA MİKTARINI GETİR
+    public double getTotalExpenseByCategory(int accountId, String category) throws SQLException {
+        String sql = "SELECT SUM(amount) FROM transactions " +
+                "WHERE source_account_id = ? " +
+                "AND category = ? " +
+                "AND transaction_type = 'GİDER' " +
+                "AND MONTH(transaction_date) = MONTH(CURRENT_DATE()) " +
+                "AND YEAR(transaction_date) = YEAR(CURRENT_DATE())";
+
+        try (Connection conn = DatabaseCon.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+            stmt.setString(2, category);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getDouble(1); // Toplam tutar döndürülür (Aylık toplam harcama cinsinden)
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
+
+    // HARCAMA GRAFİĞİ VE RAPORLAMA İÇİN METOD
+    public java.util.Map<String, Double> getExpensesByCategory(int accountId) throws SQLException {
+        java.util.Map<String, Double> data = new java.util.HashMap<>();
+
+        // SQL: Sadece GİDER olanları kategoriye göre grupla ve topla
+        String sql = "SELECT category, SUM(amount) as total FROM transactions " +
+                "WHERE source_account_id = ? AND transaction_type = 'GİDER' " +
+                "GROUP BY category";
+
+        try (Connection conn = DatabaseCon.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String cat = rs.getString("category");
+                double amount = rs.getDouble("total");
+                data.put(cat, amount);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return data;
     }
 }

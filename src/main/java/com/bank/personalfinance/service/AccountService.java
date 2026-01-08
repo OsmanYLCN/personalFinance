@@ -21,4 +21,14 @@ public class AccountService {
     public boolean createAccount(Account account) {
         return accountDAO.createAccount(account);
     }
+
+    public double getTotalBalance(int userId) {
+        List<Account> accounts = accountDAO.getAccountsByUserId(userId);
+        double total = 0;
+        for (Account acc : accounts) {
+            // Farklı para birimleri varsa kur çevirmek gerekir ama şimdilik düz topluyoruz
+            total += acc.getBalance();
+        }
+        return total;
+    }
 }

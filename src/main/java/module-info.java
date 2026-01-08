@@ -9,6 +9,7 @@ module com.bank.personalfinance {
     requires org.kordamp.ikonli.javafx;
     requires mysql.connector.j;
 
-    opens com.bank.personalfinance.controller to javafx.fxml;
+    opens com.bank.personalfinance.controller to javafx.fxml, javafx.base;
+    opens com.bank.personalfinance.model to javafx.base;
     exports com.bank.personalfinance;
 }

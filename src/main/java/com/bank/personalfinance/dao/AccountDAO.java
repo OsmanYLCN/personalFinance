@@ -63,4 +63,68 @@ public class AccountDAO {
             return false;
         }
     }
+
+    // IBAN ile hesap bulma
+    public Account getAccountByIban(String iban) throws SQLException {
+        String sql = "SELECT * FROM accounts WHERE iban = ?";
+        try (Connection conn = DatabaseCon.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, iban);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Account(
+                        rs.getInt("id"),
+                        rs.getInt("user_id"),
+                        rs.getString("account_name"),
+                        rs.getString("iban"),
+                        rs.getDouble("balance"),
+                        rs.getString("currency")
+
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Bakiye güncellenmesi
+    public boolean updateBalance(int accountId, double newBalance) throws SQLException {
+        String sql = "UPDATE accounts SET balance = ? WHERE id = ?";
+        try (Connection conn = DatabaseCon.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setDouble(1, newBalance);
+            stmt.setInt(2, accountId);
+
+            return stmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Account getAccountById(int accountId) throws SQLException {
+        String sql = "SELECT * FROM accounts WHERE id = ?";
+        try (Connection conn = DatabaseCon.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Account(
+                        rs.getInt("id"),
+                        rs.getInt("user_id"),
+                        rs.getString("account_name"),
+                        rs.getString("iban"),
+                        rs.getDouble("balance"),
+                        rs.getString("currency")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
