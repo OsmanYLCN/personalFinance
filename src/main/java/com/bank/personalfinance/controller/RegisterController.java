@@ -1,5 +1,6 @@
 package com.bank.personalfinance.controller;
 
+import com.bank.personalfinance.model.User;
 import com.bank.personalfinance.service.UserService;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -29,6 +30,8 @@ public class RegisterController implements Initializable {
     @FXML private Label lblError;
     @FXML private Button btnRegister;
     @FXML private PasswordField txtPasswordConfirm;
+    @FXML private TextField txtEmail;
+    @FXML private TextField txtPhone;
     private final UserService userService = new UserService();
 
     @Override
@@ -43,16 +46,19 @@ public class RegisterController implements Initializable {
 
     @FXML
     public void handleRegisterBtn(ActionEvent event) {
+        // Form verilerini al
         String adSoyad = txtAdSoyad.getText().trim();
         String tcNo = txtTcNo.getText().trim();
+        String email = txtEmail.getText().trim(); // YENİ
+        String phone = txtPhone.getText().trim(); // YENİ
         String password = txtPassword.getText();
         String passwordConfirm = txtPasswordConfirm.getText();
 
-        // 1. Boş Alan Kontrolü
-        if (adSoyad.isEmpty() || tcNo.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
-            lblError.setText("Tüm alanları doldurunuz!");
+        // 1. Boş Alan Kontrolü (Email ve Telefon eklendi)
+        if (adSoyad.isEmpty() || tcNo.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
+            lblError.setText("Lütfen tüm alanları doldurunuz!");
             lblError.setStyle("-fx-text-fill: #e74c3c;");
-            shakeNode(btnRegister);
+            if (btnRegister != null) shakeNode(btnRegister); // Hata vermemesi için null kontrolü
             return;
         }
 
@@ -61,34 +67,38 @@ public class RegisterController implements Initializable {
             lblError.setText("Şifreler uyuşmuyor!");
             lblError.setStyle("-fx-text-fill: #e74c3c;");
 
-            // Kullanıcı anlasın diye şifre kutularını temizle ve titret
             txtPassword.clear();
             txtPasswordConfirm.clear();
-            shakeNode(txtPassword);
-            shakeNode(txtPasswordConfirm);
+            if (txtPassword != null) shakeNode(txtPassword);
+            if (txtPasswordConfirm != null) shakeNode(txtPasswordConfirm);
             return;
         }
 
-        // 3. Veritabanına Kayıt
-        boolean isSuccess = userService.register(adSoyad, tcNo, password);
+        // 3. Veritabanına Kayıt (GÜNCELLENEN KISIM)
+        // Artık tek tek string değil, dolu bir User nesnesi gönderiyoruz.
+        // Sıralama: ID(0), TC, Şifre, AdSoyad, Rol, Email, Telefon
+        User newUser = new User(0, tcNo, password, adSoyad, "CUSTOMER", email, phone);
+
+        // UserService'deki register metodunun User nesnesi alması lazım.
+        boolean isSuccess = userService.register(newUser);
 
         if (isSuccess) {
             lblError.setText("Kayıt Başarılı! Giriş ekranına dönülüyor...");
-            lblError.setStyle("-fx-text-fill: #2ecc71;");
+            lblError.setStyle("-fx-text-fill: #2ecc71;"); // Yeşil
 
             new Thread(() -> {
                 try {
                     Thread.sleep(1500);
-                    Platform.runLater(() -> handleLoginSwitch(event));
+                    javafx.application.Platform.runLater(() -> handleLoginSwitch(event));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }).start();
 
         } else {
-            lblError.setText("Kayıt Başarısız! (TC kullanılıyor olabilir)");
-            lblError.setStyle("-fx-text-fill: #e74c3c;");
-            shakeNode(btnRegister);
+            lblError.setText("Kayıt Başarısız! (TC veya Email kullanımda)");
+            lblError.setStyle("-fx-text-fill: #e74c3c;"); // Kırmızı
+            if (btnRegister != null) shakeNode(btnRegister);
         }
     }
 

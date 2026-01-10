@@ -127,4 +127,21 @@ public class AccountDAO {
         }
         return null;
     }
+    // HESAP SİLME METODU
+    public boolean deleteAccount(int accountId) {
+        String sql = "DELETE FROM accounts WHERE id = ?";
+
+        try (Connection conn = DatabaseCon.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

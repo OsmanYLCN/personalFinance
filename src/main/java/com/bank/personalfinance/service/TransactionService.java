@@ -177,6 +177,17 @@ public class TransactionService {
         return transactionDAO.getExpensesByCategory(accountId);
     }
 
+    /**
+     * İşlem geçmişini filtrelere göre getirir.
+     * DAO katmanındaki searchTransactions metodunu çağırır.
+     */
+    public List<Transaction> searchTransactions(int accountId, java.time.LocalDate start, java.time.LocalDate end, String type, String cat) {
+        return transactionDAO.searchTransactions(accountId, start, end, type, cat);
+    }
 
+    // TransactionService.java içine ekle
+    public boolean addExpense(int accountId, String category, double amount, String description) {
+        return transactionDAO.addExpense(accountId, category, amount, description);
+    }
 
 }

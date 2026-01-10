@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="content-area" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.personalfinance.controller.ProfileController">
+    <children>
+        <VBox prefHeight="720.0" prefWidth="1280.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+
+                <HBox alignment="CENTER_LEFT" prefHeight="80.0" spacing="20.0" style="-fx-background-color: #1e1e1e; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 0, 0, 0, 5);">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-font-size: 24px; -fx-cursor: hand;" text="⬅" />
+                        <Label text="PROFİL VE AYARLAR" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="28.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <padding><Insets left="30.0" right="30.0" /></padding>
+                </HBox>
+
+                <HBox alignment="CENTER" spacing="50.0" VBox.vgrow="ALWAYS">
+                    <children>
+
+                        <VBox prefHeight="500.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 5);">
+                            <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+                            <children>
+                                <Label text="Kişisel Bilgiler" textFill="#3498db"><font><Font name="System Bold" size="20.0" /></font></Label>
+                                <Line endX="400.0" stroke="#7f8c8d" />
+
+                                <VBox spacing="5.0">
+                                    <Label text="Ad Soyad / Kullanıcı Adı" textFill="#bdc3c7" />
+                                    <TextField fx:id="txtName" editable="false" prefHeight="40.0" style="-fx-opacity: 0.7;" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="TC Kimlik No" textFill="#bdc3c7" />
+                                    <TextField fx:id="txtTC" editable="false" prefHeight="40.0" style="-fx-opacity: 0.7;" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="E-Posta" textFill="#bdc3c7" />
+                                    <TextField fx:id="txtEmail" prefHeight="40.0" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="Telefon" textFill="#bdc3c7" />
+                                    <TextField fx:id="txtPhone" prefHeight="40.0" styleClass="input-field" />
+                                </VBox>
+
+                                <Button mnemonicParsing="false" onAction="#handleUpdateInfo" prefHeight="45.0" prefWidth="440.0" styleClass="action-btn, action-btn-primary" text="Bilgileri Güncelle">
+                                    <VBox.margin><Insets top="20.0" /></VBox.margin>
+                                </Button>
+                                <Label fx:id="lblInfoStatus" textFill="#2ecc71" />
+                            </children>
+                        </VBox>
+
+                        <VBox prefHeight="500.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #2c3e50; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 5);">
+                            <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+                            <children>
+                                <Label text="Güvenlik" textFill="#e74c3c"><font><Font name="System Bold" size="20.0" /></font></Label>
+                                <Line endX="300.0" stroke="#7f8c8d" />
+
+                                <VBox spacing="5.0">
+                                    <Label text="Mevcut Şifre" textFill="#bdc3c7" />
+                                    <PasswordField fx:id="txtOldPass" prefHeight="40.0" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="Yeni Şifre" textFill="#bdc3c7" />
+                                    <PasswordField fx:id="txtNewPass" prefHeight="40.0" styleClass="input-field" />
+                                </VBox>
+
+                                <Button mnemonicParsing="false" onAction="#handleChangePassword" prefHeight="45.0" prefWidth="340.0" styleClass="action-btn, action-btn-danger" text="Şifreyi Değiştir">
+                                    <VBox.margin><Insets top="20.0" /></VBox.margin>
+                                </Button>
+                                <Label fx:id="lblPassStatus" wrapText="true" />
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

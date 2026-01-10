@@ -14,23 +14,30 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.personalfinance.controller.RegisterController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.personalfinance.controller.RegisterController">
     <children>
         <HBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
 
-                <VBox alignment="CENTER" prefHeight="720.0" prefWidth="640.0" styleClass="left-pane" HBox.hgrow="ALWAYS">
+                <VBox alignment="CENTER" prefWidth="500.0" styleClass="left-pane">
                     <children>
-                        <ImageView fitHeight="442.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../image/logo.png" />
                             </image>
                             <VBox.margin>
-                                <Insets bottom="20.0" />
+                                <Insets bottom="30.0" />
                             </VBox.margin>
                         </ImageView>
-                        <Label styleClass="title-label" text="ARAMIZA KATILIN" />
-                        <Label styleClass="subtitle-label" text="Geleceğin Finans Dünyası">
+                        <Label text="ARAMIZA KATILIN" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="32.0" />
+                            </font>
+                        </Label>
+                        <Label text="Geleceğin Finans Dünyası" textFill="#7f8c8d">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
                             <VBox.margin>
                                 <Insets top="10.0" />
                             </VBox.margin>
@@ -38,91 +45,68 @@
                     </children>
                 </VBox>
 
-                <VBox alignment="CENTER" prefHeight="720.0" prefWidth="640.0" spacing="20.0" styleClass="right-pane" HBox.hgrow="ALWAYS">
+                <VBox alignment="CENTER" styleClass="right-pane" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label styleClass="header-label" text="Hesap Oluştur">
-                            <VBox.margin>
-                                <Insets bottom="10.0" />
-                            </VBox.margin>
-                        </Label>
 
-                        <VBox maxWidth="400.0" spacing="5.0">
+                        <VBox maxWidth="450.0" spacing="12.0" style="-fx-background-color: #1E1E1E; -fx-background-radius: 20; -fx-padding: 40; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);">
                             <children>
-                                <Label text="AD SOYAD" textFill="#bdc3c7">
+                                <Label text="HESAP OLUŞTUR" textFill="WHITE">
                                     <font>
-                                        <Font size="12.0" />
+                                        <Font name="System Bold" size="24.0" />
                                     </font>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" />
+                                    </VBox.margin>
                                 </Label>
-                                <TextField fx:id="txtAdSoyad" promptText="Adınız ve Soyadınız" styleClass="input-field" />
+
+                                <VBox spacing="5.0">
+                                    <Label text="AD SOYAD" textFill="#bdc3c7"><font><Font size="12.0" /></font></Label>
+                                    <TextField fx:id="txtAdSoyad" prefHeight="40.0" promptText="Adınız ve Soyadınız" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="TC KİMLİK NO" textFill="#bdc3c7"><font><Font size="12.0" /></font></Label>
+                                    <TextField fx:id="txtTcNo" prefHeight="40.0" promptText="11 Haneli Numaranız" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="E-POSTA" textFill="#bdc3c7"><font><Font size="12.0" /></font></Label>
+                                    <TextField fx:id="txtEmail" prefHeight="40.0" promptText="ornek@email.com" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="TELEFON" textFill="#bdc3c7"><font><Font size="12.0" /></font></Label>
+                                    <TextField fx:id="txtPhone" prefHeight="40.0" promptText="05XX XXX XX XX" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="ŞİFRE" textFill="#bdc3c7"><font><Font size="12.0" /></font></Label>
+                                    <PasswordField fx:id="txtPassword" prefHeight="40.0" promptText="Güçlü bir şifre belirleyin" styleClass="input-field" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="ŞİFRE TEKRAR" textFill="#bdc3c7"><font><Font size="12.0" /></font></Label>
+                                    <PasswordField fx:id="txtPasswordConfirm" prefHeight="40.0" promptText="Şifrenizi tekrar girin" styleClass="input-field" />
+                                </VBox>
+
+                                <Label fx:id="lblError" textFill="#e74c3c" wrapText="true" />
+
+                                <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#handleRegisterBtn" prefHeight="45.0" prefWidth="400.0" styleClass="action-btn, action-btn-primary" text="KAYIT OL" textFill="WHITE">
+                                    <font><Font name="System Bold" size="14.0" /></font>
+                                    <VBox.margin><Insets top="10.0" /></VBox.margin>
+                                </Button>
+
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <Label text="Zaten hesabınız var mı?" textFill="#bdc3c7" />
+                                        <Hyperlink onAction="#handleLoginSwitch" style="-fx-border-color: transparent;" text="Giriş Yap" textFill="#00c6ff" />
+                                    </children>
+                                </HBox>
+
                             </children>
                         </VBox>
 
-                        <VBox maxWidth="400.0" spacing="5.0">
-                            <children>
-                                <Label text="TC KİMLİK NO" textFill="#bdc3c7">
-                                    <font>
-                                        <Font size="12.0" />
-                                    </font>
-                                </Label>
-                                <TextField fx:id="txtTcNo" promptText="11 Haneli Numaranız" styleClass="input-field" />
-                            </children>
-                        </VBox>
-
-                        <VBox maxWidth="400.0" spacing="5.0">
-                            <children>
-                                <Label text="ŞİFRE" textFill="#bdc3c7">
-                                    <font>
-                                        <Font size="12.0" />
-                                    </font>
-                                </Label>
-                                <PasswordField fx:id="txtPassword" promptText="Güçlü bir şifre belirleyin" styleClass="input-field" />
-                            </children>
-                        </VBox>
-
-                        <VBox maxWidth="400.0" spacing="5.0">
-                            <children>
-                                <Label text="ŞİFRE TEKRAR" textFill="#bdc3c7">
-                                    <font>
-                                        <Font size="12.0" />
-                                    </font>
-                                </Label>
-                                <PasswordField fx:id="txtPasswordConfirm" promptText="Şifrenizi tekrar girin" styleClass="input-field" />
-                            </children>
-                        </VBox>
-
-                        <Label fx:id="lblError" textFill="#e74c3c">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-
-                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#handleRegisterBtn" prefHeight="50.0" prefWidth="400.0" styleClass="login-btn" text="KAYIT OL" textFill="WHITE">
-                            <VBox.margin>
-                                <Insets top="10.0" />
-                            </VBox.margin>
-                        </Button>
-
-                        <HBox alignment="CENTER" spacing="5.0">
-                            <children>
-                                <Label text="Zaten hesabınız var mı?" textFill="#bdc3c7">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Label>
-                                <Hyperlink onAction="#handleLoginSwitch" style="-fx-border-color: transparent;" text="Giriş Yap" textFill="#00c6ff">
-                                    <font>
-                                        <Font name="System Bold" size="14.0" />
-                                    </font>
-                                </Hyperlink>
-                            </children>
-                        </HBox>
-
-                        <Line endX="100.0" startX="-100.0" stroke="#333333" />
-                        <Label text="© 2026 Finova Corp." textFill="#555555" />
                     </children>
-                    <padding>
-                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-                    </padding>
                 </VBox>
 
             </children>

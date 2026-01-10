@@ -17,7 +17,6 @@ public class AccountService {
         return accountDAO.getAccountsByUserId(userId);
     }
 
-    // İleride para transferinde bakiyeyi buradan kontrol edeceksin
     public boolean createAccount(Account account) {
         return accountDAO.createAccount(account);
     }
@@ -26,9 +25,12 @@ public class AccountService {
         List<Account> accounts = accountDAO.getAccountsByUserId(userId);
         double total = 0;
         for (Account acc : accounts) {
-            // Farklı para birimleri varsa kur çevirmek gerekir ama şimdilik düz topluyoruz
             total += acc.getBalance();
         }
         return total;
+    }
+    // HESAP SİLME SERVİSİ
+    public boolean deleteAccount(int accountId) {
+        return accountDAO.deleteAccount(accountId);
     }
 }

@@ -64,4 +64,33 @@ public class BudgetLimitDAO {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Belirtilen hesaba ait tüm bütçe limitlerini listeler.
+     * @param accountId Sorgulanacak hesap ID'si
+     * @return Bütçe limitleri listesi
+     */
+    public java.util.List<com.bank.personalfinance.model.BudgetLimit> getLimitsByAccountId(int accountId) {
+        java.util.List<com.bank.personalfinance.model.BudgetLimit> list = new java.util.ArrayList<>();
+        String sql = "SELECT * FROM budget_limits WHERE account_id = ?";
+
+        try (java.sql.Connection conn = DatabaseCon.getConnection();
+             java.sql.PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+            java.sql.ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                list.add(new com.bank.personalfinance.model.BudgetLimit(
+                        rs.getInt("id"),
+                        rs.getInt("account_id"),
+                        rs.getString("limit_type"),
+                        rs.getDouble("limit_amount")
+                ));
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
