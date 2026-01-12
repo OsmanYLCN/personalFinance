@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.personalfinance.controller.LoginController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.personalfinance.controller.LoginController">
     <children>
         <HBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -49,7 +48,7 @@
                     <children>
                         <VBox maxWidth="450.0" spacing="25.0" style="-fx-background-color: #1E1E1E; -fx-background-radius: 20; -fx-padding: 50; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);">
                             <children>
-                                <Label text="GÜVENLİ GİRİŞ" textFill="WHITE">
+                                <Label prefHeight="46.0" prefWidth="144.0" text="GİRİŞ YAP" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>

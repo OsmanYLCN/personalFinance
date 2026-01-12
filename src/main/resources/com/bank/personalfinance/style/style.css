@@ -141,3 +141,15 @@
 .right-pane {
     -fx-background-color: #121212;
 }
+#btnCloseMenu, .hamburger-btn, .close-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+/* Üzerine gelince hafif efekt */
+#btnCloseMenu:hover, .hamburger-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 50%; /* Yuvarlak efekt */
+}

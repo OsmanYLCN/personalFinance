@@ -32,14 +32,14 @@
 
                         <VBox alignment="CENTER_LEFT" spacing="2.0">
                             <children>
-                                <Label prefHeight="41.0" prefWidth="70.0" text="Hoş geldin," textFill="#7f8c8d">
+                                <Label prefHeight="50.0" prefWidth="99.0" text="Hoş geldin," textFill="#7f8c8d">
                                     <font>
-                                        <Font size="14.0" />
+                                        <Font size="18.0" />
                                     </font>
                                 </Label>
                             </children>
                         </VBox>
-                          <Label fx:id="lblWelcome" prefHeight="75.0" prefWidth="142.0" text="Kullanıcı Adı" textFill="WHITE">
+                          <Label fx:id="lblWelcome" prefHeight="61.0" prefWidth="318.0" text="Kullanıcı Adı" textFill="WHITE">
                               <font>
                                   <Font name="Segoe UI Bold" size="24.0" />
                               </font>
@@ -63,12 +63,6 @@
                                 <Label fx:id="lblTotalBalance" styleClass="card-value" text="₺ 0.00">
                                     <VBox.margin>
                                         <Insets top="15.0" />
-                                    </VBox.margin>
-                                </Label>
-
-                                <Label styleClass="card-subtitle" text="▲ %0 Artış (Geçen aya göre)">
-                                    <VBox.margin>
-                                        <Insets top="30.0" />
                                     </VBox.margin>
                                 </Label>
                             </children>
@@ -113,8 +107,6 @@
                             <children>
                                 <Button mnemonicParsing="false" onAction="#handleGoToTransfer" prefHeight="45.0" prefWidth="160.0" styleClass="action-btn, action-btn-primary" text="Para Gönder" />
                                 <Button onAction="#handleAddExpenseDialog" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15; -fx-cursor: hand;" text="💸 HARCAMA GİR" />
-                                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" styleClass="action-btn" text="Fatura Öde" />
-                                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" styleClass="action-btn" text="QR ile Çek" />
                             </children>
                         </HBox>
 
@@ -178,10 +170,10 @@
                 <Line endX="100.0" startX="-100.0" stroke="#34495e" />
 
                 <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="🏠  Genel Bakış" />
-                <Button onAction="#handleGoToAccounts" mnemonicParsing="false" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="💳  Hesaplarım" />
+                <Button mnemonicParsing="false" onAction="#handleGoToAccounts" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="💳  Hesaplarım" />
                 <Button mnemonicParsing="false" onAction="#handleGoToTransfer" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="💸  Para Transferi" />
                 <Button mnemonicParsing="false" onAction="#handleGoToBudget" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="📊  Bütçe ve Limitler" />
-                <Button mnemonicParsing="false" onAction="#handleGoToTransactions" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="İşlemler" />
+                <Button mnemonicParsing="false" onAction="#handleGoToTransactions" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="📜  İşlemler" />
 
 
 
@@ -193,7 +185,7 @@
                             </VBox.margin>
                         </Button>
 
-                        <Button mnemonicParsing="false" onAction="#handleGoToProfile" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="⚙️  Profil ve Ayarlar">
+                        <Button mnemonicParsing="false" onAction="#handleGoToProfile" prefHeight="50.0" prefWidth="260.0" styleClass="sidebar-btn" text="⚙ Profil ve Ayarlar">
                             <VBox.margin>
                                 <Insets bottom="5.0" />
                             </VBox.margin>

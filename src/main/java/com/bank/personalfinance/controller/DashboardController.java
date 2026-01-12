@@ -7,6 +7,7 @@ import com.bank.personalfinance.service.AccountService;
 import com.bank.personalfinance.service.TransactionService;
 import com.bank.personalfinance.util.UserSession;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -15,10 +16,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -37,7 +40,8 @@ public class DashboardController implements Initializable {
     @FXML private Label lblTotalBalance;
     @FXML private Label lblMonthlyExpense;
     @FXML private VBox sidebar;
-
+    @FXML private Button btnMenu;
+    @FXML private Button btnCloseMenu;
     // FXML'deki ID ile birebir aynı olmalı:
     @FXML private TableView<Transaction> tableTransactions;
     @FXML private TableColumn<Transaction, String> colDate;
@@ -51,10 +55,24 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Tablo ayarlarını yap
         setupTable();
-        // Verileri yükle
         refreshDashboard();
+
+        // --- MENÜ DIŞINA TIKLAYINCA KAPATMA ---
+        Platform.runLater(() -> {
+            if (sidebar.getScene() != null) {
+                sidebar.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+                    if (!isMenuOpen) return;
+
+                    boolean clickInsideSidebar = sidebar.getBoundsInParent().contains(event.getSceneX(), event.getSceneY());
+                    boolean clickOnMenuBtn = btnMenu.getBoundsInParent().contains(event.getSceneX(), event.getSceneY());
+
+                    if (!clickInsideSidebar && !clickOnMenuBtn) {
+                        handleMenuToggle(); // Menüyü kapat
+                    }
+                });
+            }
+        });
     }
 
     /**
@@ -195,6 +213,9 @@ public class DashboardController implements Initializable {
     public void handleGoToTransactions(ActionEvent event) {
         changeScene(event, "Transactions.fxml");
     }
+
+    @FXML
+    public void handleGoToOverview(ActionEvent event) {changeScene(event, "Dashboard.fxml"); }
 
     @FXML
     public void handleLogout(ActionEvent event) {
